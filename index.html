@@ -1,518 +1,950 @@
-<!DOCTYPE HTML>
-<!--
-	Customized Spectral Portfolio for Manish Ravi Kanth
-	Based on HTML5 UP Spectral Template
--->
-<html>
-	<head>
-		<title>Manish Ravi Kanth | Portfolio</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-		<!-- AOS Animation Library -->
-<link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    AOS.init({
-      duration: 800,
-      easing: 'ease-in-out',
-      once: true
-    });
-  });
-</script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Manish Ravi Kanth | AI Product Manager</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    :root {
+      --bg: #070a0f;
+      --surface: #0d1117;
+      --surface2: #131a24;
+      --border: rgba(255,255,255,0.07);
+      --accent: #00e5ff;
+      --accent2: #7b5cf0;
+      --text: #e8edf5;
+      --muted: #7a8a9e;
+      --heading: 'Syne', sans-serif;
+      --body: 'DM Sans', sans-serif;
+    }
 
-	</head>
-	<body class="landing is-preload">
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-		<!-- Page Wrapper -->
-			<div id="page-wrapper">
+    html { scroll-behavior: smooth; }
 
-				<!-- Header -->
-					<header id="header" class="alt">
-						<h1><a href="index.html">Manish Ravi Kanth</a></h1>
-						<nav id="nav">
-							<ul>
-								<li class="special">
-									<a href="#menu" class="menuToggle"><span>Menu</span></a>
-									<div id="menu">
-										<ul>
-											<li><a href="#banner">Home</a></li>
-											<li><a href="#experience">Work Experience</a></li>
-											<li><a href="#education">Education</a></li>
-											<li><a href="#projects">Projects</a></li>
-											<li><a href="#skills">Skills</a></li>
-											<li><a href="#certifications">Certifications</a></li>
-											<li><a href="#contact">Contact</a></li>
-											
-										</ul>
-									</div>
-								</li>
-							</ul>
-						</nav>
-					</header>
+    body {
+      font-family: var(--body);
+      background: var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+      cursor: none;
+    }
 
-				<!-- Banner -->
-					<section id="banner">
-						<div class="inner">
-							<h2>Manish Ravi Kanth</h2>
-							<p>Jr. AI Product Manager<br />
-							MASTERS IN  Engineering Management<br /></p>
-							<ul class="actions special">
-								<li><a href="https://www.linkedin.com/in/manishrk007/" target="_blank" class="button primary">CONNECT ON LINKEDIN</a></li>
-							</ul>
-						</div>
-						<a href="#experience" class="more scrolly">View Portfolio</a>
-					</section>
+    /* ── Custom Cursor ── */
+    #cursor {
+      width: 12px; height: 12px;
+      background: var(--accent);
+      border-radius: 50%;
+      position: fixed; top: 0; left: 0;
+      pointer-events: none; z-index: 9999;
+      transform: translate(-50%,-50%);
+      transition: transform 0.1s, width 0.3s, height 0.3s, opacity 0.3s;
+      mix-blend-mode: screen;
+    }
+    #cursor-ring {
+      width: 36px; height: 36px;
+      border: 1.5px solid rgba(0,229,255,0.4);
+      border-radius: 50%;
+      position: fixed; top: 0; left: 0;
+      pointer-events: none; z-index: 9998;
+      transform: translate(-50%,-50%);
+      transition: transform 0.18s ease, width 0.3s, height 0.3s;
+    }
+    body:hover #cursor { opacity: 1; }
+    a:hover ~ #cursor, button:hover ~ #cursor { width: 20px; height: 20px; }
 
-<!-- GANTEC CORPORATION -->
-<section id="experience" class="wrapper spotlight">
-  <div class="inner" style="text-align: center; max-width: 1000px; margin: 0 auto;">
-    <header class="major" style="margin-bottom: 2rem;">
-      <h2 style="display: inline-block; border-bottom: 3px solid #ddd; padding-bottom: 0.5rem;">
-        Work Experience
-      </h2>
-    </header>
+    /* ── Nav ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 1.4rem 4rem;
+      display: flex; align-items: center; justify-content: space-between;
+      transition: background 0.4s, backdrop-filter 0.4s, padding 0.4s;
+    }
+    nav.scrolled {
+      background: rgba(7,10,15,0.85);
+      backdrop-filter: blur(20px);
+      padding: 1rem 4rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo {
+      font-family: var(--heading);
+      font-weight: 800;
+      font-size: 1.15rem;
+      color: var(--text);
+      text-decoration: none;
+      letter-spacing: -0.01em;
+    }
+    .nav-logo span { color: var(--accent); }
+    .nav-links { display: flex; gap: 2.2rem; list-style: none; }
+    .nav-links a {
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--muted);
+      text-decoration: none;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+      position: relative;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute; bottom: -3px; left: 0;
+      width: 0; height: 1px;
+      background: var(--accent);
+      transition: width 0.3s;
+    }
+    .nav-links a:hover { color: var(--text); }
+    .nav-links a:hover::after { width: 100%; }
+    .nav-cta {
+      padding: 0.55rem 1.4rem;
+      border: 1px solid var(--accent);
+      color: var(--accent) !important;
+      border-radius: 4px;
+      font-size: 0.82rem !important;
+      letter-spacing: 0.08em;
+      transition: background 0.2s !important;
+    }
+    .nav-cta:hover { background: rgba(0,229,255,0.08) !important; }
+    .nav-cta::after { display: none !important; }
 
-    <div style="margin-bottom: 1rem;">
-      <a href="https://www.gantecusa.com" target="_blank">
-        <img src="https://i.postimg.cc/1tqf5kp6/Screenshot-2026-02-24-at-5-06-36-PM.png" 
-             alt="Gantec Corporation Logo" 
-             style="width: 600px; max-width: 100%; height: auto; display: block; margin: 0 auto;" />
-      </a>
-    </div>
+    /* Hamburger */
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+    .hamburger span { width: 24px; height: 2px; background: var(--text); display: block; transition: all 0.3s; }
 
-    <h3 style="display: inline-block; border-bottom: 2px solid #ccc; padding-bottom: 0.25rem; font-weight: 600; font-size: 1.25rem; margin-bottom: 1rem;">
-      GANTEC CORPORATION
-    </h3>
+    /* ── Hero ── */
+    #hero {
+      min-height: 100vh;
+      display: flex; align-items: center;
+      padding: 0 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 60% 40%, rgba(0,229,255,0.06) 0%, transparent 70%),
+        radial-gradient(ellipse 50% 50% at 20% 70%, rgba(123,92,240,0.07) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .hero-grid {
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+      background-size: 60px 60px;
+      mask-image: radial-gradient(ellipse at center, black 30%, transparent 80%);
+      pointer-events: none;
+    }
+    .hero-inner { max-width: 800px; position: relative; z-index: 2; }
+    .hero-tag {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.4rem 1rem;
+      background: rgba(0,229,255,0.06);
+      border: 1px solid rgba(0,229,255,0.2);
+      border-radius: 50px;
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: var(--accent);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 1.8rem;
+      opacity: 0; animation: fadeUp 0.6s 0.2s forwards;
+    }
+    .hero-tag::before {
+      content: '';
+      width: 6px; height: 6px;
+      background: var(--accent);
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(1.4)} }
 
-    <p style="margin-top: 0.75rem;">
-      <strong>Jr. AI Product Manager</strong><br />
-    Contributed to the development of an AI-powered voice automation platform that streamlined employment verification through rule-based call workflows, voicemail intelligence, and real-time transcript generation. Partnered with engineering and operations teams to translate business requirements into structured AI workflows and dashboards that improved verification efficiency and process visibility.
-    </p>
-  </div>
-</section>
+    .hero-name {
+      font-family: var(--heading);
+      font-size: clamp(3.2rem, 7vw, 6.5rem);
+      font-weight: 800;
+      line-height: 1.0;
+      letter-spacing: -0.03em;
+      color: var(--text);
+      opacity: 0; animation: fadeUp 0.7s 0.35s forwards;
+    }
+    .hero-name em { font-style: normal; color: var(--accent); }
 
-<!-- GANTEC CORPORATION INTERNSHIP -->
-<section class="wrapper spotlight">
-  <div class="inner" style="text-align: center; max-width: 1000px; margin: 0 auto;">
-    <div style="margin-bottom: 1rem;">
-      <a href="https://www.gantecusa.com" target="_blank">
-        <img src="https://i.postimg.cc/tgqvvB1w/temp-Image-Ku-Fk2v.avif" 
-             alt="Gantec Corporation Logo" 
-             style="width: 600px; max-width: 100%; height: auto; display: block; margin: 0 auto;" />
-      </a>
-    </div>
+    .hero-sub {
+      font-size: clamp(1rem, 2vw, 1.25rem);
+      color: var(--muted);
+      font-weight: 300;
+      margin-top: 1.2rem;
+      line-height: 1.6;
+      max-width: 540px;
+      opacity: 0; animation: fadeUp 0.7s 0.5s forwards;
+    }
 
-    <h3 style="display: inline-block; border-bottom: 2px solid #ccc; padding-bottom: 0.25rem; font-weight: 600; font-size: 1.25rem; margin-bottom: 1rem;">
-      GANTEC CORPORATION
-    </h3>
+    .hero-actions {
+      display: flex; gap: 1rem;
+      margin-top: 2.5rem; flex-wrap: wrap;
+      opacity: 0; animation: fadeUp 0.7s 0.65s forwards;
+    }
+    .btn-primary {
+      padding: 0.85rem 2rem;
+      background: var(--accent);
+      color: #070a0f;
+      font-family: var(--heading);
+      font-weight: 700;
+      font-size: 0.85rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      border: none; border-radius: 4px;
+      text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0,229,255,0.25); }
+    .btn-ghost {
+      padding: 0.85rem 2rem;
+      background: transparent;
+      color: var(--text);
+      font-family: var(--heading);
+      font-weight: 600;
+      font-size: 0.85rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      text-decoration: none;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .btn-ghost:hover { border-color: rgba(255,255,255,0.3); color: var(--accent); }
 
-    <p style="margin-top: 0.75rem;">
-      <strong>Product Management Intern </strong><br/>
-      Supported product discovery and operational reporting initiatives by documenting requirements, maintaining sprint artifacts, and developing structured dashboards to improve workflow visibility and execution efficiency.
-  </div>
-</section>
+    .hero-scroll {
+      position: absolute; bottom: 2.5rem; left: 4rem;
+      display: flex; align-items: center; gap: 0.8rem;
+      font-size: 0.72rem; font-weight: 500;
+      color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase;
+      opacity: 0; animation: fadeUp 0.7s 1s forwards;
+    }
+    .scroll-line {
+      width: 40px; height: 1px;
+      background: linear-gradient(to right, var(--accent), transparent);
+      animation: scrollLine 2s infinite;
+    }
+    @keyframes scrollLine { 0%{width:0;opacity:0} 50%{width:40px;opacity:1} 100%{width:40px;opacity:0} }
 
-<!-- Product Management Club -->
-<section class="wrapper spotlight">
-  <div class="inner" style="text-align: center; max-width: 1000px; margin: 0 auto;">
-    <div style="margin-bottom: 1rem;">
-      <a href="https://www.linkedin.com/company/product-management-club-at-stevens/" target="_blank">
-        <img src="https://i.postimg.cc/dVLdyw7v/temp-Image-Eyub-OM.avif" 
-             alt="Compass Group Logo" 
-             style="width: 400px; max-width: 100%; height: auto; display: block; margin: 0 auto;" />
-      </a>
-    </div>
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
 
-    <h3 style="display: inline-block; border-bottom: 2px solid #ccc; padding-bottom: 0.25rem; font-weight: 600; font-size: 1.25rem; margin-bottom: 1rem;">
-      Product Management Club
-    </h3>
+    /* ── Sections Common ── */
+    section { padding: 7rem 4rem; }
+    .section-label {
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--accent);
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      margin-bottom: 0.75rem;
+      display: flex; align-items: center; gap: 0.6rem;
+    }
+    .section-label::before {
+      content: '';
+      display: inline-block;
+      width: 24px; height: 1px;
+      background: var(--accent);
+    }
+    .section-title {
+      font-family: var(--heading);
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: var(--text);
+      line-height: 1.1;
+    }
+    .section-header { margin-bottom: 4rem; }
 
-    <p style="margin-top: 0.75rem;">
-      <strong>Social Media Chair </strong><br/>
-      Served as Social Media Chair for the PM Club at Stevens, leading event promotion, content creation, and workshop planning to enhance engagement and drive community participation
-  </div>
-</section>
+    /* ── Experience ── */
+    #experience { background: var(--surface); }
+    .exp-timeline { position: relative; max-width: 900px; }
+    .exp-timeline::before {
+      content: '';
+      position: absolute; left: 0; top: 0; bottom: 0;
+      width: 1px;
+      background: linear-gradient(to bottom, transparent, var(--accent), var(--accent2), transparent);
+    }
+    .exp-item {
+      padding-left: 3rem;
+      margin-bottom: 3.5rem;
+      position: relative;
+      opacity: 0; transform: translateX(-20px);
+      transition: opacity 0.6s, transform 0.6s;
+    }
+    .exp-item.visible { opacity: 1; transform: translateX(0); }
+    .exp-dot {
+      position: absolute; left: -5px; top: 6px;
+      width: 11px; height: 11px;
+      background: var(--accent);
+      border-radius: 50%;
+      box-shadow: 0 0 12px rgba(0,229,255,0.6);
+    }
+    .exp-meta {
+      display: flex; align-items: center; gap: 1rem;
+      flex-wrap: wrap; margin-bottom: 0.5rem;
+    }
+    .exp-company {
+      font-family: var(--heading);
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--text);
+    }
+    .exp-period {
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: var(--accent);
+      background: rgba(0,229,255,0.08);
+      border: 1px solid rgba(0,229,255,0.15);
+      padding: 0.2rem 0.7rem;
+      border-radius: 50px;
+      letter-spacing: 0.05em;
+    }
+    .exp-role {
+      font-size: 0.85rem;
+      color: var(--muted);
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-bottom: 0.75rem;
+    }
+    .exp-desc {
+      font-size: 0.95rem;
+      color: var(--muted);
+      line-height: 1.75;
+      max-width: 680px;
+    }
 
-<!-- PHOENIX FINE TOOLINGS -->
-<section class="wrapper spotlight">
-  <div class="inner" style="text-align: center; max-width: 1000px; margin: 0 auto;">
-    <div style="margin-bottom: 1rem;">
-      <a href="https://phoenixfinetoolings.com/index.html" target="_blank">
-        <img src="https://i.postimg.cc/WzYzNqwZ/temp-Imagej-Rowp8.avif" 
-             alt="PHOENIX FINE TOOLINGS Logo" 
-             style="width: 800px; max-width: 100%; height: auto; display: block; margin: 0 auto;" />
-      </a>
-    </div>
-
-    <h3 style="display: inline-block; border-bottom: 2px solid #ccc; padding-bottom: 0.25rem; font-weight: 600; font-size: 1.25rem; margin-bottom: 1rem;">
-      Phoenix Fine Toolings
-    </h3>
-
-    <p style="margin-top: 0.75rem;">
-      <strong>Project Coordinator</strong><br/>
-     Coordinated cross-functional production activities by managing milestone tracking, standardizing documentation processes, and improving operational communication and schedule adherence.
-    </p>
-  </div>
-</section>
-
-<!-- HINDUSTAN AERONAUTICS LIMITED -->
-<section class="wrapper spotlight">
-  <div class="inner" style="text-align: center; max-width: 1000px; margin: 0 auto;">
-    <div style="margin-bottom: 1rem;">
-      <a href="https://www.hal-india.co.in/products" target="_blank">
-        <img src="https://i.postimg.cc/0QXJFGGS/temp-Imageb1-Mc-KT.avif" 
-             alt="HINDUSTAN AERONAUTICS LIMITED Logo" 
-             style="width: 800px; max-width: 100%; height: auto; display: block; margin: 0 auto;" />
-      </a>
-    </div>
-
-    <h3 style="display: inline-block; border-bottom: 2px solid #ccc; padding-bottom: 0.25rem; font-weight: 600; font-size: 1.25rem; margin-bottom: 1rem;">
-      HINDUSTAN AERONAUTICS LIMITED
-    </h3>
-
-    <p style="margin-top: 0.75rem;">
-      <strong>Project Management Intern</strong><br/>
-     Assisted in structured project planning and execution by monitoring timelines, documenting requirements, and facilitating stakeholder coordination to ensure schedule adherence and operational efficiency.
-    </p>
-  </div>
-</section>
-
-
-
-<!-- Education -->
-<section id="education" class="wrapper spotlight alt">
-  <div class="inner" style="max-width: 1200px; margin: 0 auto; text-align: center;">
-
-    <!-- Section Heading -->
-    <h2 style="border-bottom: 2px solid #ccc; padding-bottom: 0.5rem; font-weight: 700; font-size: 2rem; margin-bottom: 3rem; display: inline-block;">
-      EDUCATION
-    </h2>
-
-    <!-- Two-column responsive layout -->
-    <div style="
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      gap: 2rem;
-    ">
-
-      <!-- Master's Card -->
-      <div style="
-        flex: 1 1 48%;
-        min-width: 320px;
-        box-sizing: border-box;
-      ">
-        <img src="https://i.postimg.cc/rw3cJFyh/temp-Image-WZEuub.avif" 
-             alt="Stevens Institute of Technology" 
-             style="width: 100%; height: auto; border-radius: 8px; margin-bottom: 1rem;" />
-
-        <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 0.5rem;">
-          Stevens Institute of Technology
-        </h3>
-        <p style="line-height: 1.6;">
-           4.00 GPA
-        </p>
-        <a href="https://www.stevens.edu/program/engineering-management-masters" target="_blank"
-           style="display: inline-block; margin-top: 1rem; padding: 0.6rem 1.5rem; background-color: #1f1f1f; border: 1px solid #ccc; color: #fff; text-decoration: none; border-radius: 6px; font-size: 0.95rem;">
-          2023 – 2025
-        </a>
-      </div>
-
-      <!-- Bachelor's Card -->
-      <div style="
-        flex: 1 1 48%;
-        min-width: 320px;
-        box-sizing: border-box;
-      ">
-        <img src="https://i.postimg.cc/G2jZZcrn/temp-Image-UBf-ISZ.avif" 
-             alt="VTU / GAT" 
-             style="width: 100%; height: auto; border-radius: 8px; margin-bottom: 1rem;" />
-
-        <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 0.5rem;">
-          GLOBAL ACADEMY OF TECHNOLOGY 
-        </h3>
-
-        <p style="line-height: 1.6;">
-          Bachelor of Engineering in Mechanical Engineering
-        </p>
-
-        <a href="https://www.gat.ac.in" target="_blank"
-           style="display: inline-block; margin-top: 1rem; padding: 0.6rem 1.5rem; background-color: #1f1f1f; border: 1px solid #ccc; color: #fff; text-decoration: none; border-radius: 6px; font-size: 0.95rem;">
-          2018 – 2022
-        </a>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-
-
-
-
-<!-- Projects Section -->
-<section id="projects" class="wrapper spotlight alt" style="text-align: center;">
-  <div class="inner" style="max-width: 1200px; margin: 0 auto;">
-
-    <!-- Section Heading -->
-    <h2 style="border-bottom: 2px solid #ccc; padding-bottom: 0.5rem; font-weight: 700; font-size: 2rem; margin-bottom: 3rem; display: inline-block;">
-      PROJECTS
-    </h2>
-
-    <!-- Project 1: AI EMPLOYMENT VERIFICATION – VOICE AUTOMATION PLATFORM -->
-<div style="display: flex; flex-wrap: wrap; align-items: center; margin-bottom: 3rem;">
-  <div style="flex: 1 1 50%; min-width: 300px;">
-      <img src="https://i.postimg.cc/8cq58tFX/Chat-GPT-Image-Feb-24-2026-at-05-37-24-PM.png" alt="Exploration and Analysis Global Health Trends" style="width: 100%; max-width: 550px; border-radius: 8px;" />
-    </a>
-  </div>
-  <div style="flex: 1 1 50%; padding: 1rem; text-align: left;">
-    <h3 style="font-weight: 700; font-size: 1.25rem;">AI EMPLOYMENT VERIFICATION – VOICE AUTOMATION PLATFORM</h3>
-    <p>Designed and launched an AI-powered employment verification MVP that automated manual verification calls using agentic workflows and real-time voice transcription, delivering structured transcripts, a client hub, and performance dashboards to streamline processing and improve turnaround efficiency.</p>
-  </div>
-</div>
-
-    <!-- Project 2: SmartDine – Campus Dining Experience Optimizer -->
-<div style="display: flex; flex-wrap: wrap; align-items: center; margin-bottom: 3rem; flex-direction: row-reverse;">
-  <div style="flex: 1 1 50%; min-width: 300px;">
-      <img src="https://i.postimg.cc/Wzry4Dxn/temp-Image2o-Xe1-S.avif" alt="Exploration and Analysis Global Health Trends" style="width: 100%; max-width: 550px; border-radius: 8px;" />
-    </a>
-  </div>
-  <div style="flex: 1 1 50%; padding: 1rem; text-align: left;">
-    <h3 style="font-weight: 700; font-size: 1.25rem;">SmartDine – Campus Dining Experience Optimizer(Academic)</h3>
-    <p>Designed SmartDine, a product concept that addressed dining hall congestion by integrating live occupancy tracking, menu insights, and predictive wait times. Built an MVP with Figma prototypes and simulated traffic data, including a student app and admin dashboard to improve transparency, reduce wait times, and support better planning</p>
-  </div>
-</div>
-
-<!-- Project 3: Rise of EV -->
-<div style="display: flex; flex-wrap: wrap; align-items: center; margin-bottom: 3rem;">
-  <div style="flex: 1 1 50%; min-width: 300px;">
-    <a href="https://github.com/ManishRaviKanth/rise-of-electric-vehicles" target="_blank">
-      <img src="https://i.postimg.cc/N0jJ51vS/temp-Imagef3n-LSd.avif" alt="Rise of EV" style="width: 100%; max-width: 550px; border-radius: 8px;" />
-    </a>
-  </div>
-  <div style="flex: 1 1 50%; padding: 1rem; text-align: left;">
-    <h3 style="font-weight: 700; font-size: 1.25rem;">Rise of Electric Vehicles(Academic)</h3>
-    <p>Analyzed EV trends across regions using visualizations and text analysis to uncover market patterns and buyer preferences.</p>
-  </div>
-</div>
-
-<!-- Project 4: Exploration and Analysis Global Health Trends -->
-<div style="display: flex; flex-wrap: wrap; align-items: center; margin-bottom: 3rem; flex-direction: row-reverse;">
-  <div style="flex: 1 1 50%; min-width: 300px;">
-    <a href="https://github.com/ManishRaviKanth/global-health-trends" target="_blank">
-      <img src="https://i.postimg.cc/bJK3CWSf/temp-Imageuy-JJ1-T.avif" alt="Exploration and Analysis Global Health Trends" style="width: 100%; max-width: 550px; border-radius: 8px;" />
-    </a>
-  </div>
-  <div style="flex: 1 1 50%; padding: 1rem; text-align: left;">
-    <h3 style="font-weight: 700; font-size: 1.25rem;">Exploration and Analysis Global Health Trends(Academic)</h3>
-    <p>A data-driven exploration of global health trends revealing how socio-economic factors impact life expectancy, mortality, and overall well-being across nations</p>
-  </div>
-</div>
-
-<!-- Project 5: Strategic Investment Mutual fund analysis -->
-<div style="display: flex; flex-wrap: wrap; align-items: center; margin-bottom: 3rem;">
-  <div style="flex: 1 1 50%; min-width: 300px;">
-    <a href="https://github.com/ManishRaviKanth/mutual-fund-analysis" target="_blank">
-      <img src="https://i.postimg.cc/G3K4jYWq/temp-Image-TTri-Xu.avif" alt="Strategic Investment: Mutual fund analysis" style="width: 100%; max-width: 550px; border-radius: 8px;" />
-    </a>
-  </div>
-  <div style="flex: 1 1 50%; padding: 1rem; text-align: left;">
-    <h3 style="font-weight: 700; font-size: 1.25rem;">Strategic Investment: Mutual Fund Analysis(Academic)</h3>
-    <p>A Decision Support System for strategic mutual fund investment, tailored to user preferences using quantitative attributes and probabilistic modeling.</p>
-  </div>
-</div>
-
-<!-- Project 6: Interstate 95 Road Extension and Rehabilitation Project -->
-<div style="display: flex; flex-wrap: wrap; align-items: center; margin-bottom: 3rem; flex-direction: row-reverse;">
-  <div style="flex: 1 1 50%; min-width: 300px;">
-    <a href="https://github.com/ManishRaviKanth/interstate-95-rehabilitation" target="_blank">
-      <img src="https://i.postimg.cc/Xqr6FRSM/temp-Imagem-C7-Be-B.avif" alt="Interstate 95 Road Extension and Rehabilitation Project" style="width: 100%; max-width: 550px; border-radius: 8px;" />
-    </a>
-  </div>
-  <div style="flex: 1 1 50%; padding: 1rem; text-align: left;">
-    <h3 style="font-weight: 700; font-size: 1.25rem;">Interstate 95 Road Extension and Rehabilitation Project(Academic)</h3>
-    <p>A strategic project to extend and rehabilitate Interstate 95, enhancing commuter safety, freight efficiency, and long-term infrastructure sustainability through structured project management.</p>
-  </div>
-</div>
-
-
-
-<!-- Skills Section -->
-<section id="skills" class="wrapper spotlight alt" style="background-color: #0d1b2a; color: #ffffff;">
-  <div class="inner" style="max-width: 1100px; margin: 0 auto;">
-
-    <!-- Section Heading -->
-    <h2 style="text-align: center; border-bottom: 2px solid #ccc; padding-bottom: 0.5rem; font-weight: 700; font-size: 2.2rem; margin-bottom: 3rem;">
-      SKILLS
-    </h2>
-
-    <!-- Skills Grid -->
-    <div style="
+    /* ── Education ── */
+    #education { background: var(--bg); }
+    .edu-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
       gap: 2rem;
-      justify-content: center;
-    ">
+    }
+    .edu-card {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+      opacity: 0; transform: translateY(24px);
+      transition: opacity 0.6s, transform 0.6s, border-color 0.3s, box-shadow 0.3s;
+    }
+    .edu-card.visible { opacity: 1; transform: translateY(0); }
+    .edu-card:hover {
+      border-color: rgba(0,229,255,0.25);
+      box-shadow: 0 16px 48px rgba(0,0,0,0.3);
+      transform: translateY(-4px) !important;
+    }
+    .edu-img { width: 100%; height: 200px; object-fit: cover; object-position: center; display: block; }
+    .edu-body { padding: 1.8rem; }
+    .edu-school {
+      font-family: var(--heading);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 0.4rem;
+    }
+    .edu-degree {
+      font-size: 0.88rem;
+      color: var(--muted);
+      line-height: 1.5;
+      margin-bottom: 1rem;
+    }
+    .edu-badges { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+    .badge {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      padding: 0.3rem 0.75rem;
+      border-radius: 50px;
+      text-transform: uppercase;
+    }
+    .badge-accent { background: rgba(0,229,255,0.1); color: var(--accent); border: 1px solid rgba(0,229,255,0.2); }
+    .badge-purple { background: rgba(123,92,240,0.1); color: #a78bfa; border: 1px solid rgba(123,92,240,0.2); }
 
-      <!-- Skill Card: Product Strategy -->
-      <div style="background: #1b263b; padding: 2rem; border-radius: 8px; font-size: 1.05rem;" data-aos="fade-up">
-        <h3 style="font-weight: bold; font-size: 1.2rem; display: flex; align-items: center; gap: 10px; text-transform: uppercase;">
-          <img src="https://img.icons8.com/ios-filled/50/00bfff/edit-property.png" alt="Product Strategy Icon" style="width: 24px;" />
-          Product Strategy
-        </h3>
-        <hr style="width: 50px; border-color: #ccc;" />
-        <p>Defining product requirements, prioritizing features, and aligning roadmaps with business goals using Agile frameworks.</p>
-      </div>
+    /* ── Projects ── */
+    #projects { background: var(--surface); }
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 1.75rem;
+    }
+    .project-card {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      position: relative;
+      opacity: 0; transform: translateY(24px);
+      transition: opacity 0.5s, transform 0.5s;
+    }
+    .project-card.visible { opacity: 1; transform: translateY(0); }
+    .project-card::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(to bottom, transparent 40%, rgba(7,10,15,0.95) 100%);
+      pointer-events: none;
+    }
+    .project-img { width: 100%; height: 220px; object-fit: cover; display: block; transition: transform 0.5s; }
+    .project-card:hover .project-img { transform: scale(1.05); }
+    .project-body {
+      padding: 1.5rem;
+      position: relative; z-index: 1;
+    }
+    .project-tags { display: flex; gap: 0.4rem; flex-wrap: wrap; margin-bottom: 0.75rem; }
+    .project-tag {
+      font-size: 0.68rem;
+      font-weight: 600;
+      padding: 0.2rem 0.6rem;
+      border-radius: 3px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .tag-ai { background: rgba(0,229,255,0.12); color: var(--accent); }
+    .tag-pm { background: rgba(123,92,240,0.12); color: #a78bfa; }
+    .tag-data { background: rgba(74,222,128,0.12); color: #4ade80; }
+    .tag-infra { background: rgba(251,191,36,0.12); color: #fbbf24; }
+    .project-name {
+      font-family: var(--heading);
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+      line-height: 1.3;
+    }
+    .project-desc {
+      font-size: 0.88rem;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+    .project-link {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      margin-top: 1rem;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--accent);
+      text-decoration: none;
+      letter-spacing: 0.05em;
+      transition: gap 0.2s;
+    }
+    .project-link:hover { gap: 0.7rem; }
 
-      <!-- Skill Card: Business Analysis -->
-      <div style="background: #1b263b; padding: 2rem; border-radius: 8px; font-size: 1.05rem;" data-aos="fade-up">
-        <h3 style="font-weight: bold; font-size: 1.2rem; display: flex; align-items: center; gap: 10px; text-transform: uppercase;">
-          <img src="https://img.icons8.com/ios-filled/50/00bfff/database.png" alt="Business Analysis Icon" style="width: 24px;" />
-          Business Analysis
-        </h3>
-        <hr style="width: 50px; border-color: #ccc;" />
-        <p>Gathering requirements, creating user stories, and documenting workflows to ensure alignment with stakeholder needs.</p>
-      </div>
+    /* ── Skills ── */
+    #skills { background: var(--bg); }
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.25rem;
+    }
+    .skill-card {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.8rem;
+      transition: border-color 0.3s, transform 0.3s;
+      opacity: 0; transform: translateY(20px);
+      transition: opacity 0.5s, transform 0.5s;
+    }
+    .skill-card.visible { opacity: 1; transform: translateY(0); }
+    .skill-card:hover { border-color: rgba(0,229,255,0.2); transform: translateY(-3px) !important; }
+    .skill-icon {
+      width: 44px; height: 44px;
+      background: rgba(0,229,255,0.08);
+      border: 1px solid rgba(0,229,255,0.15);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+    .skill-name {
+      font-family: var(--heading);
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--text);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-bottom: 0.5rem;
+    }
+    .skill-desc { font-size: 0.88rem; color: var(--muted); line-height: 1.6; }
 
-      <!-- Skill Card:Data-Driven Decisions -->
-      <div style="background: #1b263b; padding: 2rem; border-radius: 8px; font-size: 1.05rem;" data-aos="fade-up">
-        <h3 style="font-weight: bold; font-size: 1.2rem; display: flex; align-items: center; gap: 10px; text-transform: uppercase;">
-          <img src="https://img.icons8.com/ios-filled/50/00bfff/combo-chart--v1.png" alt="Data-Driven Decisions Icon" style="width: 24px;" />
-          Data-Driven Decisions
-        </h3>
-        <hr style="width: 50px; border-color: #ccc;" />
-        <p>Leveraging SQL, Power BI, Tableau, and Excel to build dashboards and support KPI-driven insights for product initiatives.</p>
-      </div>
+    /* ── Certifications ── */
+    #certifications { background: var(--surface); }
+    .cert-list {
+      display: flex; flex-direction: column; gap: 1rem;
+      max-width: 700px;
+    }
+    .cert-item {
+      display: flex; align-items: center; gap: 1.2rem;
+      padding: 1.2rem 1.5rem;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      transition: border-color 0.3s;
+      opacity: 0; transform: translateX(-16px);
+      transition: opacity 0.5s, transform 0.5s;
+    }
+    .cert-item.visible { opacity: 1; transform: translateX(0); }
+    .cert-item:hover { border-color: rgba(0,229,255,0.25); }
+    .cert-icon { color: #fbbf24; font-size: 1rem; flex-shrink: 0; }
+    .cert-name {
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--text);
+    }
 
-      <!-- Skill Card: Agile & Collaboration -->
-      <div style="background: #1b263b; padding: 2rem; border-radius: 8px; font-size: 1.05rem;" data-aos="fade-up">
-        <h3 style="font-weight: bold; font-size: 1.2rem; display: flex; align-items: center; gap: 10px; text-transform: uppercase;">
-          <img src="https://img.icons8.com/ios-filled/50/00bfff/briefcase.png" alt="Agile & Collaboration Icon" style="width: 24px;" />
-          Agile & Collaboration
-        </h3>
-        <hr style="width: 50px; border-color: #ccc;" />
-        <p>Facilitating sprint planning, backlog prioritization, and cross-functional collaboration using Jira, Confluence, and Miro.</p>
-      </div>
+    /* ── Contact ── */
+    #contact {
+      background: var(--bg);
+      position: relative; overflow: hidden;
+    }
+    #contact::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 60% 60% at 50% 0%, rgba(0,229,255,0.05), transparent 70%);
+      pointer-events: none;
+    }
+    .contact-inner {
+      max-width: 700px; margin: 0 auto;
+      text-align: center; position: relative; z-index: 1;
+    }
+    .contact-inner .section-label { justify-content: center; }
+    .contact-inner .section-label::before { display: none; }
+    .contact-inner .section-title { margin: 0 auto 1rem; }
+    .contact-sub {
+      font-size: 1.05rem;
+      color: var(--muted);
+      line-height: 1.7;
+      margin-bottom: 2.5rem;
+    }
+    .contact-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .social-row {
+      display: flex; gap: 1.2rem; justify-content: center;
+      margin-top: 3rem;
+    }
+    .social-btn {
+      width: 44px; height: 44px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 1rem;
+      transition: border-color 0.2s, color 0.2s, background 0.2s;
+    }
+    .social-btn:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: rgba(0,229,255,0.06);
+    }
 
-      <!-- Skill Card: Documentation & Communication -->
-      <div style="background: #1b263b; padding: 2rem; border-radius: 8px; font-size: 1.05rem;" data-aos="fade-up">
-        <h3 style="font-weight: bold; font-size: 1.2rem; display: flex; align-items: center; gap: 10px; text-transform: uppercase;">
-          <img src="https://img.icons8.com/ios-filled/50/00bfff/document--v1.png" alt="Documentation & Communication Icon" style="width: 24px;" />
-          Documentation & Communication
-        </h3>
-        <hr style="width: 50px; border-color: #ccc;" />
-        <p>Preparing PRDs, presentations, and stakeholder reports with Office 365, Google Workspace, and collaborative tools.</p>
-      </div>
+    /* ── Footer ── */
+    footer {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      padding: 2rem 4rem;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 1rem;
+    }
+    .footer-logo {
+      font-family: var(--heading);
+      font-weight: 800;
+      font-size: 1rem;
+      color: var(--text);
+      text-decoration: none;
+    }
+    .footer-logo span { color: var(--accent); }
+    .footer-copy {
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
 
-      <!-- Skill Card: Product Testing -->
-      <div style="background: #1b263b; padding: 2rem; border-radius: 8px; font-size: 1.05rem;" data-aos="fade-up">
-        <h3 style="font-weight: bold; font-size: 1.2rem; display: flex; align-items: center; gap: 10px; text-transform: uppercase;">
-          <img src="https://img.icons8.com/ios-filled/50/00bfff/bug.png" alt="Product Testing Icon" style="width: 24px;" />
-          Product Testing
-        </h3>
-        <hr style="width: 50px; border-color: #ccc;" />
-        <p>Validating features through UAT, A/B testing, and iterative feedback to ensure product quality before deployment..</p>
-      </div>
+    /* ── Mobile ── */
+    @media (max-width: 768px) {
+      nav { padding: 1.2rem 1.5rem; }
+      nav.scrolled { padding: 0.9rem 1.5rem; }
+      .nav-links { display: none; }
+      .nav-links.open {
+        display: flex; flex-direction: column;
+        position: fixed; top: 0; right: 0; bottom: 0;
+        width: 70%; max-width: 280px;
+        background: var(--surface);
+        padding: 5rem 2rem 2rem;
+        border-left: 1px solid var(--border);
+        z-index: 200;
+        gap: 1.5rem;
+      }
+      .hamburger { display: flex; z-index: 300; }
+      section { padding: 5rem 1.5rem; }
+      #hero { padding: 0 1.5rem; }
+      .hero-scroll { left: 1.5rem; }
+      footer { padding: 1.5rem; flex-direction: column; text-align: center; }
+    }
 
-    </div>
-  </div>
-</section>
+    /* ── Scroll Reveal ── */
+    .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s, transform 0.7s; }
+    .reveal.visible { opacity: 1; transform: none; }
+  </style>
+</head>
+<body>
 
-<!-- Certifications -->
-<section id="certifications" class="wrapper style2 special">
-  <div class="inner">
-    <header class="major">
-      <h2>Certifications</h2>
-    </header>
-    <ul class="alt">
-      <li style="color: gold;">Certified Scrum Product Owner (CSPO)</li>
-      <li style="color: gold;">Certified Scrum Master (CSM)</li>
-      <li style="color: gold;">Bloomberg Market Concept</li>
-      <li style="color: gold;">Data Exploration and Visualization for Risk and Decision Making</li>
+  <!-- Custom Cursor -->
+  <div id="cursor"></div>
+  <div id="cursor-ring"></div>
+
+  <!-- Nav -->
+  <nav id="navbar">
+    <a href="#hero" class="nav-logo">MRK<span>.</span></a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#certifications">Certs</a></li>
+      <li><a href="#contact" class="nav-cta">Contact</a></li>
     </ul>
-  </div>
-</section>
-
-
-
-<!-- Contact / Available Section -->
-<section id="contact" class="wrapper style4" style="background: #2d2d2d; color: white; padding: 4rem 1rem;">
-  <div class="inner" style="max-width: 1100px; margin: 0 auto; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 2rem;">
-
-    <!-- Left Side: Text -->
-    <div style="flex: 1 1 500px;">
-      <h2 style="text-transform: uppercase; font-size: 2rem; font-weight: 700; letter-spacing: 0.08rem; margin-bottom: 0.75rem;">
-        Available to Hire
-      </h2>
-      <hr style="width: 220px; border: 1px solid #fff; margin: 0.5rem 0 1.25rem 0;">
-      <p style="font-size: 1.2rem; line-height: 1.6;">
-        Currently looking for full-time Product Management roles<br />
-      
-      </p>
+    <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
     </div>
+  </nav>
 
-    <!-- Right Side: Styled Buttons -->
-    <div style="flex: 1 1 300px;">
-      <ul class="actions special" style="margin-bottom: 1rem;">
-        <li>
-          <a href="mailto:ravikanthmanish@gmail.com" class="button primary" style="width: 220px;">Contact</a>
-        </li>
-      </ul>
-      <ul class="actions special">
-        <li>
-          <a href="#top" class="button" style="width: 220px;">Learn More</a>
-        </li>
-      </ul>
+  <!-- Hero -->
+  <section id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-grid"></div>
+    <div class="hero-inner">
+      <div class="hero-tag">Available for Full-Time Roles</div>
+      <h1 class="hero-name">Manish<br/>Ravi <em>Kanth</em></h1>
+      <p class="hero-sub">Jr. AI Product Manager · Masters in Engineering Management · Building at the intersection of AI, product, and operations.</p>
+      <div class="hero-actions">
+        <a href="https://www.linkedin.com/in/manishrk007/" target="_blank" class="btn-primary">Connect on LinkedIn</a>
+        <a href="#projects" class="btn-ghost">View Projects</a>
+      </div>
     </div>
+    <div class="hero-scroll"><div class="scroll-line"></div>Scroll to explore</div>
+  </section>
 
-  </div>
-</section>
+  <!-- Experience -->
+  <section id="experience">
+    <div class="section-header reveal">
+      <div class="section-label">Career</div>
+      <h2 class="section-title">Work Experience</h2>
+    </div>
+    <div class="exp-timeline">
 
+      <div class="exp-item">
+        <div class="exp-dot"></div>
+        <div class="exp-meta">
+          <span class="exp-company">Gantec Corporation</span>
+          <span class="exp-period">Current</span>
+        </div>
+        <div class="exp-role">Jr. AI Product Manager</div>
+        <p class="exp-desc">Contributed to the development of an AI-powered voice automation platform that streamlined employment verification through rule-based call workflows, voicemail intelligence, and real-time transcript generation. Partnered with engineering and operations teams to translate business requirements into structured AI workflows and dashboards that improved verification efficiency and process visibility.</p>
+      </div>
 
+      <div class="exp-item">
+        <div class="exp-dot" style="background: var(--accent2); box-shadow: 0 0 12px rgba(123,92,240,0.6);"></div>
+        <div class="exp-meta">
+          <span class="exp-company">Gantec Corporation</span>
+          <span class="exp-period" style="color:#a78bfa; background:rgba(123,92,240,0.08); border-color:rgba(123,92,240,0.2);">Internship</span>
+        </div>
+        <div class="exp-role">Product Management Intern</div>
+        <p class="exp-desc">Supported product discovery and operational reporting initiatives by documenting requirements, maintaining sprint artifacts, and developing structured dashboards to improve workflow visibility and execution efficiency.</p>
+      </div>
 
-<!-- Footer -->
-<footer id="footer" style="background: #1a1a1a; padding: 2rem 0; text-align: center;">
-  <ul class="icons" style="display: flex; justify-content: center; gap: 2rem; list-style: none; padding: 0; margin: 0;">
-    <li>
-      <a href="https://www.linkedin.com/in/manishrk007/" target="_blank" class="icon brands fa-linkedin" style="font-size: 1.5rem; color: #aaa;">
-        <span class="label">LinkedIn</span>
-      </a>
-    </li>
-    <li>
-      <a href="https://www.facebook.com" target="_blank" class="icon brands fa-facebook" style="font-size: 1.5rem; color: #aaa;">
-        <span class="label">Facebook</span>
-      </a>
-    </li>
-    <li>
-      <a href="https://www.instagram.com" target="_blank" class="icon brands fa-instagram" style="font-size: 1.5rem; color: #aaa;">
-        <span class="label">Instagram</span>
-      </a>
-    </li>
-    <li>
-      <a href="https://github.com/ManishRaviKanth" target="_blank" class="icon brands fa-github" style="font-size: 1.5rem; color: #aaa;">
-        <span class="label">GitHub</span>
-      </a>
-    </li>
-    <li>
-      <a href="mailto:ravikanthmanish@gmail.com" class="icon solid fa-envelope" style="font-size: 1.5rem; color: #aaa;">
-        <span class="label">Email</span>
-      </a>
-    </li>
-  </ul>
-</footer>
+      <div class="exp-item">
+        <div class="exp-dot" style="background: #4ade80; box-shadow: 0 0 12px rgba(74,222,128,0.5);"></div>
+        <div class="exp-meta">
+          <span class="exp-company">Product Management Club · Stevens</span>
+          <span class="exp-period" style="color:#4ade80; background:rgba(74,222,128,0.08); border-color:rgba(74,222,128,0.2);">Leadership</span>
+        </div>
+        <div class="exp-role">Social Media Chair</div>
+        <p class="exp-desc">Served as Social Media Chair, leading event promotion, content creation, and workshop planning to enhance engagement and drive community participation across the Stevens PM ecosystem.</p>
+      </div>
 
+      <div class="exp-item">
+        <div class="exp-dot" style="background: #fbbf24; box-shadow: 0 0 12px rgba(251,191,36,0.5);"></div>
+        <div class="exp-meta">
+          <span class="exp-company">Phoenix Fine Toolings</span>
+          <span class="exp-period" style="color:#fbbf24; background:rgba(251,191,36,0.08); border-color:rgba(251,191,36,0.2);">2022</span>
+        </div>
+        <div class="exp-role">Project Coordinator</div>
+        <p class="exp-desc">Coordinated cross-functional production activities by managing milestone tracking, standardizing documentation processes, and improving operational communication and schedule adherence.</p>
+      </div>
 
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.scrollex.min.js"></script>
-			<script src="assets/js/jquery.scrolly.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
+      <div class="exp-item">
+        <div class="exp-dot" style="background: #f87171; box-shadow: 0 0 12px rgba(248,113,113,0.5);"></div>
+        <div class="exp-meta">
+          <span class="exp-company">Hindustan Aeronautics Limited</span>
+          <span class="exp-period" style="color:#f87171; background:rgba(248,113,113,0.08); border-color:rgba(248,113,113,0.2);">Internship</span>
+        </div>
+        <div class="exp-role">Project Management Intern</div>
+        <p class="exp-desc">Assisted in structured project planning and execution by monitoring timelines, documenting requirements, and facilitating stakeholder coordination to ensure schedule adherence and operational efficiency.</p>
+      </div>
 
-	</body>
+    </div>
+  </section>
+
+  <!-- Education -->
+  <section id="education">
+    <div class="section-header reveal">
+      <div class="section-label">Academic</div>
+      <h2 class="section-title">Education</h2>
+    </div>
+    <div class="edu-grid">
+      <div class="edu-card">
+        <img src="https://i.postimg.cc/rw3cJFyh/temp-Image-WZEuub.avif" alt="Stevens Institute of Technology" class="edu-img" />
+        <div class="edu-body">
+          <div class="edu-school">Stevens Institute of Technology</div>
+          <div class="edu-degree">Masters in Engineering Management</div>
+          <div class="edu-badges">
+            <span class="badge badge-accent">4.0 GPA</span>
+            <span class="badge badge-purple">2023 – 2025</span>
+          </div>
+        </div>
+      </div>
+      <div class="edu-card">
+        <img src="https://i.postimg.cc/G2jZZcrn/temp-Image-UBf-ISZ.avif" alt="Global Academy of Technology" class="edu-img" />
+        <div class="edu-body">
+          <div class="edu-school">Global Academy of Technology</div>
+          <div class="edu-degree">Bachelor of Engineering · Mechanical Engineering</div>
+          <div class="edu-badges">
+            <span class="badge badge-accent">VTU</span>
+            <span class="badge badge-purple">2018 – 2022</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section id="projects">
+    <div class="section-header reveal">
+      <div class="section-label">Portfolio</div>
+      <h2 class="section-title">Selected Projects</h2>
+    </div>
+    <div class="project-grid">
+
+      <div class="project-card">
+        <img src="https://i.postimg.cc/8cq58tFX/Chat-GPT-Image-Feb-24-2026-at-05-37-24-PM.png" alt="AI Employment Verification" class="project-img" />
+        <div class="project-body">
+          <div class="project-tags">
+            <span class="project-tag tag-ai">AI</span>
+            <span class="project-tag tag-pm">Product</span>
+          </div>
+          <div class="project-name">AI Employment Verification – Voice Automation Platform</div>
+          <p class="project-desc">Designed and launched an AI-powered MVP automating manual verification calls using agentic workflows and real-time voice transcription, delivering structured transcripts and performance dashboards.</p>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <img src="https://i.postimg.cc/Wzry4Dxn/temp-Image2o-Xe1-S.avif" alt="SmartDine" class="project-img" />
+        <div class="project-body">
+          <div class="project-tags">
+            <span class="project-tag tag-pm">Product</span>
+            <span class="project-tag tag-data">UX</span>
+          </div>
+          <div class="project-name">SmartDine – Campus Dining Experience Optimizer</div>
+          <p class="project-desc">Designed a product concept integrating live occupancy tracking, menu insights, and predictive wait times. Built an MVP with Figma prototypes and simulated traffic data.</p>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <a href="https://github.com/ManishRaviKanth/rise-of-electric-vehicles" target="_blank" style="display:block">
+        <img src="https://i.postimg.cc/N0jJ51vS/temp-Imagef3n-LSd.avif" alt="Rise of EV" class="project-img" />
+        </a>
+        <div class="project-body">
+          <div class="project-tags">
+            <span class="project-tag tag-data">Data</span>
+          </div>
+          <div class="project-name">Rise of Electric Vehicles</div>
+          <p class="project-desc">Analyzed EV adoption trends across regions using visualizations and text analysis to uncover market patterns and buyer preferences.</p>
+          <a href="https://github.com/ManishRaviKanth/rise-of-electric-vehicles" target="_blank" class="project-link">View on GitHub <i class="fa fa-arrow-right"></i></a>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <a href="https://github.com/ManishRaviKanth/global-health-trends" target="_blank" style="display:block">
+        <img src="https://i.postimg.cc/bJK3CWSf/temp-Imageuy-JJ1-T.avif" alt="Global Health Trends" class="project-img" />
+        </a>
+        <div class="project-body">
+          <div class="project-tags">
+            <span class="project-tag tag-data">Data</span>
+          </div>
+          <div class="project-name">Exploration & Analysis: Global Health Trends</div>
+          <p class="project-desc">A data-driven exploration revealing how socio-economic factors impact life expectancy, mortality, and overall well-being across nations.</p>
+          <a href="https://github.com/ManishRaviKanth/global-health-trends" target="_blank" class="project-link">View on GitHub <i class="fa fa-arrow-right"></i></a>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <a href="https://github.com/ManishRaviKanth/mutual-fund-analysis" target="_blank" style="display:block">
+        <img src="https://i.postimg.cc/G3K4jYWq/temp-Image-TTri-Xu.avif" alt="Mutual Fund Analysis" class="project-img" />
+        </a>
+        <div class="project-body">
+          <div class="project-tags">
+            <span class="project-tag tag-data">Data</span>
+            <span class="project-tag tag-pm">Strategy</span>
+          </div>
+          <div class="project-name">Strategic Investment: Mutual Fund Analysis</div>
+          <p class="project-desc">A Decision Support System for strategic mutual fund investment tailored to user preferences using quantitative attributes and probabilistic modeling.</p>
+          <a href="https://github.com/ManishRaviKanth/mutual-fund-analysis" target="_blank" class="project-link">View on GitHub <i class="fa fa-arrow-right"></i></a>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <a href="https://github.com/ManishRaviKanth/interstate-95-rehabilitation" target="_blank" style="display:block">
+        <img src="https://i.postimg.cc/Xqr6FRSM/temp-Imagem-C7-Be-B.avif" alt="Interstate 95" class="project-img" />
+        </a>
+        <div class="project-body">
+          <div class="project-tags">
+            <span class="project-tag tag-infra">Infrastructure</span>
+            <span class="project-tag tag-pm">PM</span>
+          </div>
+          <div class="project-name">Interstate 95 Road Extension & Rehabilitation</div>
+          <p class="project-desc">A strategic project enhancing commuter safety, freight efficiency, and long-term infrastructure sustainability through structured project management.</p>
+          <a href="https://github.com/ManishRaviKanth/interstate-95-rehabilitation" target="_blank" class="project-link">View on GitHub <i class="fa fa-arrow-right"></i></a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Skills -->
+  <section id="skills">
+    <div class="section-header reveal">
+      <div class="section-label">Capabilities</div>
+      <h2 class="section-title">Skills</h2>
+    </div>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <div class="skill-icon"><i class="fa fa-chess-king"></i></div>
+        <div class="skill-name">Product Strategy</div>
+        <p class="skill-desc">Defining product requirements, prioritizing features, and aligning roadmaps with business goals using Agile frameworks.</p>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon"><i class="fa fa-chart-bar"></i></div>
+        <div class="skill-name">Business Analysis</div>
+        <p class="skill-desc">Gathering requirements, creating user stories, and documenting workflows to ensure alignment with stakeholder needs.</p>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon"><i class="fa fa-database"></i></div>
+        <div class="skill-name">Data-Driven Decisions</div>
+        <p class="skill-desc">Leveraging SQL, Power BI, Tableau, and Excel to build dashboards and support KPI-driven insights for product initiatives.</p>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon"><i class="fa fa-people-group"></i></div>
+        <div class="skill-name">Agile & Collaboration</div>
+        <p class="skill-desc">Facilitating sprint planning, backlog prioritization, and cross-functional collaboration using Jira, Confluence, and Miro.</p>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon"><i class="fa fa-file-lines"></i></div>
+        <div class="skill-name">Documentation</div>
+        <p class="skill-desc">Preparing PRDs, presentations, and stakeholder reports with Office 365, Google Workspace, and collaborative tools.</p>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon"><i class="fa fa-vial"></i></div>
+        <div class="skill-name">Product Testing</div>
+        <p class="skill-desc">Validating features through UAT, A/B testing, and iterative feedback to ensure product quality before deployment.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Certifications -->
+  <section id="certifications">
+    <div class="section-header reveal">
+      <div class="section-label">Credentials</div>
+      <h2 class="section-title">Certifications</h2>
+    </div>
+    <div class="cert-list">
+      <div class="cert-item"><span class="cert-icon"><i class="fa fa-medal"></i></span><span class="cert-name">Certified Scrum Product Owner (CSPO)</span></div>
+      <div class="cert-item"><span class="cert-icon"><i class="fa fa-medal"></i></span><span class="cert-name">Certified Scrum Master (CSM)</span></div>
+      <div class="cert-item"><span class="cert-icon"><i class="fa fa-medal"></i></span><span class="cert-name">Bloomberg Market Concepts</span></div>
+      <div class="cert-item"><span class="cert-icon"><i class="fa fa-medal"></i></span><span class="cert-name">Data Exploration and Visualization for Risk and Decision Making</span></div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact">
+    <div class="contact-inner reveal">
+      <div class="section-label">Get In Touch</div>
+      <h2 class="section-title">Available to Hire</h2>
+      <p class="contact-sub">Currently looking for full-time Product Management roles. Let's build something great together.</p>
+      <div class="contact-actions">
+        <a href="mailto:manishravikanth@gmail.com" class="btn-primary">Send a Message</a>
+        <a href="https://www.linkedin.com/in/manishrk007/" target="_blank" class="btn-ghost">LinkedIn Profile</a>
+      </div>
+      <div class="social-row">
+        <a href="https://www.linkedin.com/in/manishrk007/" target="_blank" class="social-btn"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://github.com/ManishRaviKanth" target="_blank" class="social-btn"><i class="fab fa-github"></i></a>
+        <a href="https://www.instagram.com" target="_blank" class="social-btn"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.facebook.com" target="_blank" class="social-btn"><i class="fab fa-facebook-f"></i></a>
+        <a href="mailto:manishravikanth@gmail.com" class="social-btn"><i class="fa fa-envelope"></i></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <a href="#hero" class="footer-logo">MRK<span>.</span></a>
+    <p class="footer-copy">© 2025 Manish Ravi Kanth · All rights reserved</p>
+  </footer>
+
+  <script>
+    // Cursor
+    const cursor = document.getElementById('cursor');
+    const ring = document.getElementById('cursor-ring');
+    let mx = 0, my = 0, rx = 0, ry = 0;
+    document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
+    function animCursor() {
+      cursor.style.left = mx + 'px'; cursor.style.top = my + 'px';
+      rx += (mx - rx) * 0.12; ry += (my - ry) * 0.12;
+      ring.style.left = rx + 'px'; ring.style.top = ry + 'px';
+      requestAnimationFrame(animCursor);
+    }
+    animCursor();
+    document.querySelectorAll('a, button').forEach(el => {
+      el.addEventListener('mouseenter', () => { cursor.style.width = '20px'; cursor.style.height = '20px'; ring.style.width = '52px'; ring.style.height = '52px'; });
+      el.addEventListener('mouseleave', () => { cursor.style.width = '12px'; cursor.style.height = '12px'; ring.style.width = '36px'; ring.style.height = '36px'; });
+    });
+
+    // Nav scroll
+    const nav = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 40);
+    });
+
+    // Hamburger
+    function toggleMenu() {
+      document.getElementById('navLinks').classList.toggle('open');
+    }
+    document.querySelectorAll('#navLinks a').forEach(a => a.addEventListener('click', () => document.getElementById('navLinks').classList.remove('open')));
+
+    // Scroll reveal
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.reveal, .exp-item, .edu-card, .project-card, .skill-card, .cert-item').forEach(el => observer.observe(el));
+
+    // Stagger delays
+    document.querySelectorAll('.project-card').forEach((el, i) => el.style.transitionDelay = (i * 0.08) + 's');
+    document.querySelectorAll('.skill-card').forEach((el, i) => el.style.transitionDelay = (i * 0.07) + 's');
+    document.querySelectorAll('.cert-item').forEach((el, i) => el.style.transitionDelay = (i * 0.1) + 's');
+    document.querySelectorAll('.exp-item').forEach((el, i) => el.style.transitionDelay = (i * 0.1) + 's');
+    document.querySelectorAll('.edu-card').forEach((el, i) => el.style.transitionDelay = (i * 0.15) + 's');
+  </script>
+</body>
 </html>
